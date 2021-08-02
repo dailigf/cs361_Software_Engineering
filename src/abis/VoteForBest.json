@@ -1,0 +1,527 @@
+{
+  "contractName": "VoteForBest",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "itsAlwaysSunny",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "southPark",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "voteSouthPark",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "voteItAlwaysSunny",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"itsAlwaysSunny\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"southPark\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"voteItAlwaysSunny\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"voteSouthPark\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/francisdailig/Library/Mobile Documents/com~apple~CloudDocs/OSU/cs361_SE1/prototype/cs340_Databases/src/contracts/Vote.sol\":\"VoteForBest\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/francisdailig/Library/Mobile Documents/com~apple~CloudDocs/OSU/cs361_SE1/prototype/cs340_Databases/src/contracts/Vote.sol\":{\"keccak256\":\"0x5450d37b1b4bd3367aa3453fd257a1bb0ee5fd02519e1a64bfd3236e0ecdd08d\",\"urls\":[\"bzz-raw://7e2f4d7faeed4ca42d5c3e630ad808924eebe41e189bb4aff79e783945464c1f\",\"dweb:/ipfs/QmSRCYibJApSPZHA1625jCsWh18N6irfTZgp5SrRe5UzZK\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5060fb8061001f6000396000f3fe6080604052348015600f57600080fd5b506004361060465760003560e01c80634568d6ae14604b5780636ef4f9f814606757806395f7236914606f578063e74d8779146077575b600080fd5b60516093565b6040518082815260200191505060405180910390f35b606d6099565b005b607560ac565b005b607d60c0565b6040518082815260200191505060405180910390f35b60015481565b6000808154809291906001019190505550565b600160008154809291906001019190505550565b6000548156fea265627a7a72315820693b9143a3e564930300f91a346721c0318ca29a5123b8aff4001606d53d916664736f6c63430005100032",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060465760003560e01c80634568d6ae14604b5780636ef4f9f814606757806395f7236914606f578063e74d8779146077575b600080fd5b60516093565b6040518082815260200191505060405180910390f35b606d6099565b005b607560ac565b005b607d60c0565b6040518082815260200191505060405180910390f35b60015481565b6000808154809291906001019190505550565b600160008154809291906001019190505550565b6000548156fea265627a7a72315820693b9143a3e564930300f91a346721c0318ca29a5123b8aff4001606d53d916664736f6c63430005100032",
+  "sourceMap": "25:197:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:197:1;;;;;;;",
+  "deployedSourceMap": "25:197:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:197:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;75:29;;;:::i;:::-;;;;;;;;;;;;;;;;;;;109:49;;;:::i;:::-;;161:58;;;:::i;:::-;;48:24;;;:::i;:::-;;;;;;;;;;;;;;;;;;;75:29;;;;:::o;109:49::-;143:9;;:11;;;;;;;;;;;;;109:49::o;161:58::-;199:14;;:16;;;;;;;;;;;;;161:58::o;48:24::-;;;;:::o",
+  "source": "pragma solidity ^0.5.0;\n\ncontract VoteForBest{\n\tuint256 public southPark;\n\tuint256 public itsAlwaysSunny;\n\n\n\tfunction voteSouthPark()public{\n\t\tsouthPark++;\n\t}\n\n\tfunction voteItAlwaysSunny()public{\n\t\titsAlwaysSunny++;\n\t}\n\n}\n",
+  "sourcePath": "/Users/francisdailig/Library/Mobile Documents/com~apple~CloudDocs/OSU/cs361_SE1/prototype/cs340_Databases/src/contracts/Vote.sol",
+  "ast": {
+    "absolutePath": "/Users/francisdailig/Library/Mobile Documents/com~apple~CloudDocs/OSU/cs361_SE1/prototype/cs340_Databases/src/contracts/Vote.sol",
+    "exportedSymbols": {
+      "VoteForBest": [
+        77
+      ]
+    },
+    "id": 78,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 58,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:1"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 77,
+        "linearizedBaseContracts": [
+          77
+        ],
+        "name": "VoteForBest",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 60,
+            "name": "southPark",
+            "nodeType": "VariableDeclaration",
+            "scope": 77,
+            "src": "48:24:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 59,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "48:7:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 62,
+            "name": "itsAlwaysSunny",
+            "nodeType": "VariableDeclaration",
+            "scope": 77,
+            "src": "75:29:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 61,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "75:7:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 68,
+              "nodeType": "Block",
+              "src": "139:19:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 66,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "UnaryOperation",
+                    "operator": "++",
+                    "prefix": false,
+                    "src": "143:11:1",
+                    "subExpression": {
+                      "argumentTypes": null,
+                      "id": 65,
+                      "name": "southPark",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 60,
+                      "src": "143:9:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 67,
+                  "nodeType": "ExpressionStatement",
+                  "src": "143:11:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 69,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "voteSouthPark",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 63,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "131:2:1"
+            },
+            "returnParameters": {
+              "id": 64,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "139:0:1"
+            },
+            "scope": 77,
+            "src": "109:49:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 75,
+              "nodeType": "Block",
+              "src": "195:24:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 73,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "UnaryOperation",
+                    "operator": "++",
+                    "prefix": false,
+                    "src": "199:16:1",
+                    "subExpression": {
+                      "argumentTypes": null,
+                      "id": 72,
+                      "name": "itsAlwaysSunny",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 62,
+                      "src": "199:14:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 74,
+                  "nodeType": "ExpressionStatement",
+                  "src": "199:16:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 76,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "voteItAlwaysSunny",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 70,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "187:2:1"
+            },
+            "returnParameters": {
+              "id": 71,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "195:0:1"
+            },
+            "scope": 77,
+            "src": "161:58:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 78,
+        "src": "25:197:1"
+      }
+    ],
+    "src": "0:223:1"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/francisdailig/Library/Mobile Documents/com~apple~CloudDocs/OSU/cs361_SE1/prototype/cs340_Databases/src/contracts/Vote.sol",
+    "exportedSymbols": {
+      "VoteForBest": [
+        77
+      ]
+    },
+    "id": 78,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 58,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:1"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 77,
+        "linearizedBaseContracts": [
+          77
+        ],
+        "name": "VoteForBest",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 60,
+            "name": "southPark",
+            "nodeType": "VariableDeclaration",
+            "scope": 77,
+            "src": "48:24:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 59,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "48:7:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 62,
+            "name": "itsAlwaysSunny",
+            "nodeType": "VariableDeclaration",
+            "scope": 77,
+            "src": "75:29:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 61,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "75:7:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 68,
+              "nodeType": "Block",
+              "src": "139:19:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 66,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "UnaryOperation",
+                    "operator": "++",
+                    "prefix": false,
+                    "src": "143:11:1",
+                    "subExpression": {
+                      "argumentTypes": null,
+                      "id": 65,
+                      "name": "southPark",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 60,
+                      "src": "143:9:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 67,
+                  "nodeType": "ExpressionStatement",
+                  "src": "143:11:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 69,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "voteSouthPark",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 63,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "131:2:1"
+            },
+            "returnParameters": {
+              "id": 64,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "139:0:1"
+            },
+            "scope": 77,
+            "src": "109:49:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 75,
+              "nodeType": "Block",
+              "src": "195:24:1",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 73,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "UnaryOperation",
+                    "operator": "++",
+                    "prefix": false,
+                    "src": "199:16:1",
+                    "subExpression": {
+                      "argumentTypes": null,
+                      "id": 72,
+                      "name": "itsAlwaysSunny",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 62,
+                      "src": "199:14:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 74,
+                  "nodeType": "ExpressionStatement",
+                  "src": "199:16:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 76,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "voteItAlwaysSunny",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 70,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "187:2:1"
+            },
+            "returnParameters": {
+              "id": 71,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "195:0:1"
+            },
+            "scope": 77,
+            "src": "161:58:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 78,
+        "src": "25:197:1"
+      }
+    ],
+    "src": "0:223:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.2.3",
+  "updatedAt": "2021-07-18T07:37:17.788Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

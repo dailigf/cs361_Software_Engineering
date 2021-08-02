@@ -1,0 +1,85 @@
+<!-- simple Bootstrap Navbar from https://www.w3schools.com/bootstrap/bootstrap_navbar.asp -->
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<h1>Francis' Decentralized Application (dApp)</h1>
+		</div>
+	</div>
+  	<div class="row">
+  	  	<div class="col">
+			<form class="form-horizontal">
+				<label for="address">Wallet Address:<i class="fas fa-info-circle" title="This is a 20 digit hex number representing your wallet"></i></label>
+				<select name="address" class="form-control" id="address">
+					<option selected disabled hidden style='display: none' value=''></option>
+					{{#each Addresses}}
+					<option value={{address}}>{{address}}</option>
+					{{/each}}
+				</select>
+				<div class="text-right">
+					<button class="btn btn-primary" onclick="verifyFunds(event)">Verify Funds</button><i class="fas fa-info-circle" title="Click Here to Show Your Available Funds"></i>
+				</div>
+			</form><br>
+			<div>
+				{{#if funds}}
+				<p>Available Funds: <i class="fas fa-info-circle" title="Funds Availabe in Your Wallet"></i></p>
+				<p>Address: {{curr_Address.query}}</p>
+				<p>Wallet Balance: {{funds.balance}}</p>
+				{{/if}}
+
+			</div><br>
+			<form class="form-horizontal">
+				<label for="address">Wallet Address:<i class="fas fa-info-circle" title="This is a 20 digit hex number representing your wallet"></i></label><br>
+				<select name="address" class="form-control" id="buyer">
+					<option selected disabled hidden style='display: none' value=''></option>
+					{{#each Addresses}}
+					<option value={{address}}>{{address}}</option>
+					{{/each}}
+				</select>
+				<label for="translateText">Enter Text to Translate: <i class="fas fa-info-circle" title="Enter Text That You Want Translated Here"></i></label><br>
+				<textarea name="translateText" class="form-control" rows="6" placeholder="Enter Text to Translate" id="translateText"></textarea><br>
+				<div class="text-right">
+					<button class="btn btn-primary" onclick="test(event)">Translate Text</button><i class="fas fa-info-circle" title="You will be charged for translation services, charges are irreversible!!"></i>
+				</div>
+				<br>
+			</form>
+
+			{{#if receipt}}
+				<div class="card">
+					<div class="card-header">Original Text <i class="fas fa-info-circle" title="This is your orignal text"></i></div>
+					<div class="card-body">{{original.original_text}}</div>
+				</div><br>
+
+				<div class="card">
+					<div class="card-header">Translated Text <i class="fas fa-info-circle" title="This is Your translated text"></i></div>
+					<div class="card-body">{{translated.translated_text}}</div>
+				</div><br>
+
+				<div class="card">
+					<div class="card-header">Transaction Infromation <i class="fas fa-info-circle" title="This Shows Transaction Information/Charges to your account"></i></div>
+					<div class="card-body">
+						<p><em>Buyer Address:</em> {{buyer.buyer}} <i class="fas fa-info-circle" title="This the buyer address"></i></p>
+						<p><em>Start Balance (wei):</em> {{buyer_start_bal.buyer_start_bal}} <i class="fas fa-info-circle" title="This was your starting balance before your purchase"></i></p>
+						<p><em>Translation Price (wei):</em> {{purchase_price.purchase_price}} <i class="fas fa-info-circle" title="This is the cost of using my translation services"></i></p>
+						<p><em>Mining Cost(wei):</em> {{gas_used.gas_used}} <i class="fas fa-info-circle" title="Mining fees charged to execute transaction on the block chain"></i></p>
+						<p><em>Current Balance (wei):</em> {{buyer_end_bal.buyer_end_bal}} <i class="fas fa-info-circle" title="Your balance after using my services"></i></p>
+						<p><em>Transaction Hash:</em> {{receipt.receipt}} <i class="fas fa-info-circle" title="This is a record of your transaction, can be used to verify."></i><p>
+					</div>
+				</div>
+			{{/if}}
+  	  	</div>
+  	  	<div class="col">
+			<div class='container'>
+				<div class='row text-left'>
+					<p>Hey what's up, welcome to my decentralized application</p>
+				</div>
+			</div>
+
+  	  	</div>
+		<nav class="navbar fixed-bottom navbar-dark bg-dark">
+  			<a class="navbar-brand" href="https://ethereum.org/en/">What is Etherium?</a>
+  			<a class="navbar-brand" href="https://ethereum.org/en/developers/docs/smart-contracts/">What is a Smart Contract?</a>
+  			<a class="navbar-brand" href="https://www.investopedia.com/terms/b/blockchain.asp/">What is a Blockchain?</a>
+  			<a class="navbar-brand" href="https://www.gemini.com/cryptopedia/decentralized-applications-defi-dapps">What is a dAPP?</a>
+		</nav>
+  	</div>
+</div>
