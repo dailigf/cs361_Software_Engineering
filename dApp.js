@@ -46,6 +46,22 @@ module.exports = function () {
 		})
 	}
 
+	async function getSellerStartBalance(address, context, complete){
+		web3.eth.getBalance(address, (err, balance) => {
+			console.log(balance);
+			context.jaq_start_bal = {'jaq_start_bal': balance};
+			complete();
+		})
+	}
+
+	async function getSellerEndBalance(address, context, complete){
+		web3.eth.getBalance(address, (err, balance) => {
+			console.log('jaq ending balance: ', balance);
+			context.jaq_end_bal = {'jaq_end_bal': balance};
+			complete();
+		})
+	}
+
 	async function getEndBalance(address, context, complete){
 		web3.eth.getBalance(address, (err, balance) => {
 			context.buyer_end_bal = {'buyer_end_bal': balance};
@@ -216,41 +232,6 @@ module.exports = function () {
 		const purchase_Price = web3.utils.toWei('1', 'ether');
 		let gas_used = 0;
 
-		//web3.eth.getTransactionCount(buyer, (err, txCount) => {
-		//	//Build Transaction
-		//	const txObject = {
-		//		nonce: web3.utils.toHex(txCount),
-		//		from: buyer,
-		//		to: seller,
-		//		value: web3.utils.toHex(web3.utils.toWei('1', 'ether')),
-		//		gasLimit: '0x6691B7',
-		//		gasPrice: web3.utils.toHex(web3.utils.toWei('1', 'gwei'))
-		//	};
-
-		//	console.log(txObject);
-
-		//	//Sign the Transaction with buyers private Key
-		//	const tx = new Tx(txObject);
-		//	tx.sign(buyer_Key);
-
-		//	const serializedTransaction = tx.serialize();
-		//	const raw = serializedTransaction.toString('hex');
-
-		//	//Broadcast the Transaction
-		//	//var retObj = web3.eth.sendSignedTransaction(raw);
-		//	//console.log(retObj);
-		//	web3.eth.sendSignedTransaction(raw, (err, txHash) => {
-		//		console.log('txHash: ', raw);
-		//		console.log(txHash);
-		//		web3.eth.getTransactionReceipt(txHash, (err, obj) => {
-		//			gas_used = obj.gasUsed;
-		//			console.log(web3.utils.toWei(gas_used.toString(), 'gwei'));
-		//			console.log('starting balance: ', buyer_start_bal)
-		//			console.log('purchase price: ', purchase_Price);
-		//		});
-		//	});
-		//});
-
 
 		//Get Buyer's starting balance
 		getStartBalance(buyer, context, complete);
@@ -273,6 +254,60 @@ module.exports = function () {
 				console.log(callbackcount)
 				console.log(context);
 				res.render('dApp.handlebars', context);
+			}
+		}
+	});
+
+	router.post('/jaq', function (req, res) {
+		/*When the user updates a worktation, browser will submit must a 'POST' request to this route
+		 * The user supplied information will be used to update Workstations Table*/
+		let callbackcount = 0;
+		var context = {}
+		context.jsscripts = ["verifyFunds.js", "translate.js"];
+
+		const originalText = req.body.text;
+		const buyer = req.body.buyer;
+		const seller = req.body.jaq;
+		context.buyer = {'buyer': buyer};
+		context.jaq = {'jaq': seller};
+
+		const buyer_Key = Buffer.from(private_Keys.get(buyer),'hex');
+		const jaq_Key = Buffer.from(private_Keys.get(seller), 'hex')
+		let buyer_start_bal = 0;
+		let buyer_end_bal = 0;
+
+		const purchase_Price = web3.utils.toWei('1', 'ether');
+		let gas_used = 0;
+
+
+		//Get Buyer's starting balance
+		getStartBalance(buyer, context, complete);
+
+		//Get Jaq's starting balance
+		getSellerStartBalance(seller, context, complete);
+
+		//Execute a transaction
+		writeTransaction(buyer, context, complete);
+
+		//Get Addressed
+		getAddresses(context, complete);
+
+		//Get Seller Ending Balance
+		getSellerEndBalance(seller, context, complete);
+
+
+		//Dummy Translated Text
+		//var text = "This is a dummy text, to be translated in the future";
+		//context.translated = {'translated_text': text};
+		//context.original = {'original_text': originalText};
+
+
+		function complete() {
+			callbackcount++;
+			if (callbackcount >= 5) {
+				console.log(callbackcount)
+				console.log(context);
+				//res.render('dApp.handlebars', context);
 			}
 		}
 	});
