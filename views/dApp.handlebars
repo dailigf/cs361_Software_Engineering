@@ -7,7 +7,7 @@
 	</div>
   	<div class="row">
   	  	<div class="col">
-			<form class="form-horizontal">
+			<form class="form-horizontal" id="verify-funds-dropdown">
 				<label for="address">Wallet Address:<i class="fas fa-info-circle" title="This is a 20 digit hex number representing your wallet"></i></label>
 				<select name="address" class="form-control" id="address">
 					<option selected disabled hidden style='display: none' value=''></option>
@@ -19,15 +19,28 @@
 					<button class="btn btn-primary" onclick="verifyFunds(event)">Verify Funds</button><i class="fas fa-info-circle" title="Click Here to Show Your Available Funds"></i>
 				</div>
 			</form><br>
-			<div>
+			<form class="form-horizontal" id="verify-funds-manual">
+				<label for="address-manual">Wallet Address:<i class="fas fa-info-circle" title="This is a 20 digit hex number representing your wallet"></i></label>
+				<input type="text" name="address" class="form-control" id="address-manual">
+				<div class="text-right">
+					<button class="btn btn-primary" onclick="verifyFundsManual(event)">Verify Funds Manually</button><i class="fas fa-info-circle" title="Click Here to Show Your Available Funds"></i>
+				</div>
+			</form><br>
+
 				{{#if funds}}
-				<p>Available Funds: <i class="fas fa-info-circle" title="Funds Availabe in Your Wallet"></i></p>
-				<p>Address: {{curr_Address.query}}</p>
-				<p>Wallet Balance: {{funds.balance}}</p>
+				<div class="card">
+					<div class="card-header">Wallet Information <i class="fas fa-info-circle" title="Funds Availabe in Your Wallet"></i></div>
+					<div class="card-body">
+						<p>Available Funds: </p>
+						<p>Address: {{curr_Address.query}}</p>
+						<p>Wallet Balance: {{funds.balance}}</p>
+					</div>
+				
+				</div><br>
 				{{/if}}
 
-			</div><br>
-			<form class="form-horizontal">
+				<h3>Jaq's MicroService</h3><br>
+			<form class="form-horizontal" id="translate-form">
 				<label for="address">Wallet Address:<i class="fas fa-info-circle" title="This is a 20 digit hex number representing your wallet"></i></label><br>
 				<select name="address" class="form-control" id="buyer">
 					<option selected disabled hidden style='display: none' value=''></option>
@@ -62,7 +75,7 @@
 						<p><em>Translation Price (wei):</em> {{purchase_price.purchase_price}} <i class="fas fa-info-circle" title="This is the cost of using my translation services"></i></p>
 						<p><em>Mining Cost(wei):</em> {{gas_used.gas_used}} <i class="fas fa-info-circle" title="Mining fees charged to execute transaction on the block chain"></i></p>
 						<p><em>Current Balance (wei):</em> {{buyer_end_bal.buyer_end_bal}} <i class="fas fa-info-circle" title="Your balance after using my services"></i></p>
-						<p><em>Transaction Hash:</em> {{receipt.receipt}} <i class="fas fa-info-circle" title="This is a record of your transaction, can be used to verify."></i><p>
+						<p><em>Transaction Hash:</em> {{receipt.receipt}} <i class="fas fa-info-circle" title="This is a record of your transaction, can be used to verify."></i><p><br>
 					</div>
 				</div>
 			{{/if}}
@@ -75,11 +88,11 @@
 			</div>
 
   	  	</div>
-		<nav class="navbar fixed-bottom navbar-dark bg-dark">
-  			<a class="navbar-brand" href="https://ethereum.org/en/">What is Etherium?</a>
-  			<a class="navbar-brand" href="https://ethereum.org/en/developers/docs/smart-contracts/">What is a Smart Contract?</a>
-  			<a class="navbar-brand" href="https://www.investopedia.com/terms/b/blockchain.asp/">What is a Blockchain?</a>
-  			<a class="navbar-brand" href="https://www.gemini.com/cryptopedia/decentralized-applications-defi-dapps">What is a dAPP?</a>
+		<nav class="navbar navbar-default fixed-bottom navbar-dark bg-dark">
+  			<a class="navbar-brand" href="https://ethereum.org/en/" onclick="followLink(event, this.href)">What is Etherium?</a>
+  			<a class="navbar-brand" href="https://ethereum.org/en/developers/docs/smart-contracts/" onclick="followLink(event, this.href)">What is a Smart Contract?</a>
+  			<a class="navbar-brand" href="https://www.investopedia.com/terms/b/blockchain.asp/" onclick="followLink(event, this.href)">What is a Blockchain?</a>
+  			<a class="navbar-brand" href="https://www.gemini.com/cryptopedia/decentralized-applications-defi-dapps" onclick="followLink(event, this.href)">What is a dAPP?</a>
 		</nav>
   	</div>
 </div>
