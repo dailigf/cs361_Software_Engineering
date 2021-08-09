@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/dailigf/cs340_Databases#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.3.1",
     "ethereumjs-tx": "^2.1.2",
@@ -25,6 +26,7 @@
     "mysql": "^2.18.1",
     "strip-hex-prefix": "^1.0.0",
     "truffle": "^5.1.39",
+    "url": "^0.11.0",
     "web3": "^1.2.11"
   }
 }

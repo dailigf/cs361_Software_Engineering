@@ -48,23 +48,22 @@
 					<option value={{address}}>{{address}}</option>
 					{{/each}}
 				</select>
-				<label for="translateText">Enter Text to Translate: <i class="fas fa-info-circle" title="Enter Text That You Want Translated Here"></i></label><br>
-				<textarea name="translateText" class="form-control" rows="6" placeholder="Enter Text to Translate" id="translateText"></textarea><br>
+				<label for="translateText">Enter a word you want defined: <i class="fas fa-info-circle" title="Enter the word you want defined here"></i></label><br>
+				<textarea name="translateText" class="form-control" rows="6" placeholder="Enter Word to be defined" id="translateText"></textarea><br>
 				<div class="text-right">
-					<button class="btn btn-primary" onclick="test(event)">Translate Text</button><i class="fas fa-info-circle" title="You will be charged for translation services, charges are irreversible!!"></i>
+					<button class="btn btn-primary" onclick="test(event)">Define</button><i class="fas fa-info-circle" title="You will be charged for dictionary services, charges are irreversible!!"></i>
 				</div>
 				<br>
 			</form>
 
 			{{#if receipt}}
 				<div class="card">
-					<div class="card-header">Original Text <i class="fas fa-info-circle" title="This is your orignal text"></i></div>
-					<div class="card-body">{{original.original_text}}</div>
-				</div><br>
-
-				<div class="card">
-					<div class="card-header">Translated Text <i class="fas fa-info-circle" title="This is Your translated text"></i></div>
-					<div class="card-body">{{translated.translated_text}}</div>
+					<div class="card-header">{{word.word}} <i class="fas fa-info-circle" title="These are the definitions"></i></div>
+					{{#each definition}}
+						<div class="card-body">
+							<p>Definition: {{this}}</p>
+						</div>
+					{{/each}}
 				</div><br>
 
 				<div class="card">

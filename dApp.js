@@ -1,9 +1,12 @@
 module.exports = function () {
 	var express = require('express');
 	var router = express.Router();
+	var axios = require('axios');
 	var Tx = require('ethereumjs-tx').Transaction;
   	var Web3 = require('Web3');
   	const web3 = new Web3('http://127.0.0.1:7545');
+	const stripHexPrefix = require('strip-hex-prefix');
+	const url = require('url');
 
 	const privateKeys = new Map();
 	
@@ -14,12 +17,27 @@ module.exports = function () {
 	privateKeys.set('0xB69298340cBdE5A255f51acDadA0BaBF72d96Db6', '15fc02fe4d5bcaf328b823ea83f7d0539ff132f247355f72c9aee52e9275fc88');
 	privateKeys.set('0x5BcB57B0f3e310eBB8291fb7E93B778E9b3E15AD', 'dccacfc4ada926b1132f58394581edf31ad3bf9a20be82a85bf41f7e483abe46');
 	privateKeys.set('0x9fAe9D4a544d77D972029e14Fad754fED5F86aDF', '95442e0f6ac34ee4101599d3f5568da1c07a3d83761915ec3dc368d5992583b2');
-
+	privateKeys.set('0xcbeB9eDEEe498bB8fbB4Aae49980A093aB48B762', 'f95269d0b6b362004901b73bff9bc7688aef3ca131b431a3e9e832a7df795d78');
+	privateKeys.set('0x8382F90D494B29736d44fb61e23d8D1cEB57f4ed', '54fa2769b683d842811ad0dce1c51214c4d4c086921c93e9de9685dc50dff3d3');
+	privateKeys.set('0xb8d935f277C4BFb032FA1C62fD6dd6dD595Bb72f', '5eceb5d14e22b6706eb39f14cd84783795ffe6ffecbb6ab51f3b550ade0b0cbd');
 	const seller = '0xc6EfbA1f45dD02294e4503F3dEFC6008cd7326dc';
 	privateKeys.set(seller, '9b175370afbd39ef4b038676888a68b005590ef8d430a30c65d28284165d482a');
 
-	const stripHexPrefix = require('strip-hex-prefix');
 
+	async function callJaqService(queryParam){
+		/* This function will be used to call Jaq's microservice
+		 * :param queryParam: This is the word that is to be defined
+		 * :type queryParam: string
+		 *
+		 * :return: returns the response from Jaqs microservice
+		 * :rtype: json response object
+		 */
+		let payload = {"query": queryParam};
+		const params = new url.URLSearchParams(payload);
+		const jaqURL = `http://127.0.0.1:31337/dApp/jaq?${params}`;
+		let res = await axios.get(jaqURL);
+		return res
+	};
 
 	async function createTxObject(address, seller){
 		/* This function will be used to create a transaction object
@@ -43,6 +61,7 @@ module.exports = function () {
 		return txObject;
 
 	}
+
 	async function getBalance_Improved(address){
 		/* This function will get the balance of an address
 		 * :param address: The address of a wallet
@@ -133,6 +152,14 @@ module.exports = function () {
 		var context = {}
 		context.jsscripts = ["verifyFunds.js", "translate.js"];
 
+		/*Call Jaqs Microservice*/
+		const jaqResponse = await callJaqService(req.body.text);
+		let data = jaqResponse.data;
+
+		context.word = {"word": data["word"]};
+		delete data["word"];
+		context.definition = data;
+
 		context.buyer = {'buyer': req.body.buyer};
 
 		//Get Buyer's starting balance
@@ -151,6 +178,8 @@ module.exports = function () {
 		var text = "This is a dummy text, to be translated in the future";
 		context.translated = {'translated_text': text};
 		context.original = {'original_text': req.body.text};
+
+		console.log(context)
 
 		res.render('dApp.handlebars', context);
 
@@ -189,6 +218,20 @@ module.exports = function () {
                 	"fundDeposited": fundDeposited
 
 		});
+
+	});
+
+	router.get('/jaq', async (req, res) => {
+		/*
+		 * Root page for /jaq. This route will be used to simulate a test against Jaq's microservice. 
+		 */
+
+		res.status(200).json({
+			"word":	"younger",
+			"definition1": "having the qualities popularly associated with young people, such as enthusiasm and optimism.",
+			"definition2": "immature or inexperienced"
+		});
+
 
 	});
 
