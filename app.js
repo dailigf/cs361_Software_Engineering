@@ -2,7 +2,7 @@
 	SETUP
 */ 
 var Tx = require('ethereumjs-tx').Transaction;
-var Web3 = require('Web3');
+var Web3 = require('web3');
 const web3 = new Web3('http://127.0.0.1:7545');
 var express = require('express');   
 var app = express();            

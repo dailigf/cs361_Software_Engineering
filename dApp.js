@@ -3,7 +3,7 @@ module.exports = function () {
 	var router = express.Router();
 	var axios = require('axios');
 	var Tx = require('ethereumjs-tx').Transaction;
-  	var Web3 = require('Web3');
+  	var Web3 = require('web3');
   	const web3 = new Web3('http://127.0.0.1:7545');
 	const stripHexPrefix = require('strip-hex-prefix');
 	const url = require('url');
@@ -175,11 +175,11 @@ module.exports = function () {
 		context.Addresses = await getAddresses_Improved();
 
 		//Dummy Translated Text
-		var text = "This is a dummy text, to be translated in the future";
-		context.translated = {'translated_text': text};
-		context.original = {'original_text': req.body.text};
+		//var text = "This is a dummy text, to be translated in the future";
+		//context.translated = {'translated_text': text};
+		//context.original = {'original_text': req.body.text};
 
-		console.log(context)
+		//console.log(context)
 
 		res.render('dApp.handlebars', context);
 
